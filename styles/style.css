@@ -1,0 +1,86 @@
+header {
+    background-color: black;
+    height: auto;
+    width: 100vw;
+    color: white;
+
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #50757a;
+    height: auto;
+    width: 100vw;
+    padding-top: 40px;
+    color: #fff;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: right;
+}
+
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+    padding: 0.5em;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: white;
+}
+
+.svg-icon circle {
+    stroke: white;
+    stroke-width: 1;
+}
+
+div.center-fotter-list {
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    background-color: #50757a;
+    height: 3em;
+    width: 100%;
+    margin-bottom: 4em;
+
+}
+
+.elememt {
+    color: white;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+}
+
+a {
+
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #3f6059;
+
+}
