@@ -8,7 +8,15 @@ this.fullName=fullName;
 this.department=department;
 this.level=level;
 this.imageURL=imageURL;
-this.salaryLevel= function (level){
+
+
+this.salaryLevel(level);
+employees.push(this);
+
+let netSalary=this.salary/7.5;
+}
+
+Employee.prototype.salaryLevel=function (level){
     console.log(level);
 switch (level) {
     case "Senior":
@@ -26,12 +34,6 @@ case "Mid-Senior":
         break;
 }
 
-}
-
-this.salaryLevel(level);
-employees.push(this);
-
-let netSalary=this.salary/7.5;
 }
 
 Employee.prototype.render=function(){
