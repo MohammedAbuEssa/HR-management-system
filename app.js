@@ -1,23 +1,32 @@
 "use strict"
 let employees=[];
 
-function Employee(id,fullName,department,level,imageURL,){
+function Employee(fullName,department,level,imageURL,){
 this.salary=0;
-this.id=id;
+this.id=0;
 this.fullName=fullName;
 this.department=department;
 this.level=level;
 this.imageURL=imageURL;
-
-
 this.salaryLevel(level);
+this.idGenerater();
 employees.push(this);
+
 
 let netSalary=this.salary/7.5;
 }
 
+Employee.prototype.idGenerater=function () {
+let uniqueId=0;
+uniqueId=Math.floor(Math.random() * (9999-1000-1)+1000);
+this.id=uniqueId;
+console.log(uniqueId);
+
+}
+
+
 Employee.prototype.salaryLevel=function (level){
-    console.log(level);
+   
 switch (level) {
     case "Senior":
         this.salary=Math.floor(Math.random() * (2000-1500-1)+1500);
@@ -36,8 +45,19 @@ case "Mid-Senior":
 
 }
 
+
+function headerRender() {
+    const h3E1=document.createElement("h3");
+    let header=document.getElementById("h3");
+    h3E1.textContent=`HR-management-system`;
+    header.appendChild(h3E1);
+    console.log(this.id);   
+}
+
+headerRender();
+
 Employee.prototype.render=function(){
-    document.write(`<h4>The employee name is ${this.fullName} and his/her salary is ${this.salary}</h4>`);
+    // document.write(`<h4>The employee name is ${this.fullName} and his/her salary is ${this.salary}</h4>`);
 }
 
 
