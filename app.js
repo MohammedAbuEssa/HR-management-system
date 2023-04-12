@@ -1,5 +1,10 @@
 "use strict"
 let employees=[];
+let header=document.getElementById("h3");
+let div1E1=document.getElementById("card");
+let myForm=document.getElementById("employeeForm");
+
+
 
 function Employee(fullName,department,level,imageURL,){
 this.salary=0;
@@ -11,10 +16,22 @@ this.imageURL=imageURL;
 this.salaryLevel(level);
 this.idGenerater();
 employees.push(this);
-
-
 let netSalary=this.salary/7.5;
 }
+
+myForm.addEventListener('submit',handleSubmit);
+
+function handleSubmit(event) {
+    event.preventDefault();
+    let employeeName=event.target.eName.value;
+    let employeeDep=event.target.department.value;
+    let employeeLev=event.target.level.value;
+    let employeeImg=event.target.image.value;
+    console.log(employeeLev);
+    let employeeNew= new Employee(employeeName,employeeDep,employeeLev,employeeImg);
+employeeNew.render();
+}
+
 
 Employee.prototype.idGenerater=function () {
 let uniqueId=0;
@@ -48,26 +65,47 @@ case "Mid-Senior":
 
 function headerRender() {
     const h3E1=document.createElement("h3");
-    let header=document.getElementById("h3");
     h3E1.textContent=`HR-management-system`;
     header.appendChild(h3E1);
-    console.log(this.id);   
+  
 }
 
 headerRender();
 
 Employee.prototype.render=function(){
+
     // document.write(`<h4>The employee name is ${this.fullName} and his/her salary is ${this.salary}</h4>`);
+// div1E1.style.display="flex";
+// div1E1.style.flexWrap="wrap";
+// div1E1.style.flexDirection="column";
+div1E1.style.backgroundColor="#50757a";
+
+
+const imgE1=document.createElement("img");
+imgE1.src=this.imageURL;
+imgE1.style.height="10em";
+imgE1.style.borderRadius="50%";
+
+div1E1.appendChild(imgE1);
+    const employeeInfo=document.createElement("h4");
+    employeeInfo.textContent= `Name: ${this.fullName} - ID: ${this.id}`;
+    div1E1.appendChild(employeeInfo);
+    // const brE1=document.createElement("br");
+    // div1E1.appendChild(brE1);
+    const employeeInfo2=document.createElement("h4");
+    employeeInfo2.textContent= `Department: ${this.department} - Level: ${this.level} ${this.salary}`;
+    div1E1.appendChild(employeeInfo2);
+
 }
 
 
-let ghazi= new Employee(1000,'Ghazi Samer','Administration','Senior');
-let lana= new Employee(1001,'Lana Ali','Finance','Senior');
-let tamara= new Employee(1002,'Tamara Ayoub','Marketing','Senior');
-let safi= new Employee(1003,'Safi Walid','Administration','Mid-Senior');
-let omar= new Employee(1004,'Omar Zaid','Development','Senior');
-let rana= new Employee(1005,'Rana Saleh','Development','Junior');
-let hadi= new Employee(1006,'Hadi Ahmad','Finance','Mid-Senior');
+// let ghazi= new Employee(1000,'Ghazi Samer','Administration','Senior',"./assets/img_avatar.png");
+// let lana= new Employee(1001,'Lana Ali','Finance','Senior',"./assets/img_avatar.png");
+// let tamara= new Employee(1002,'Tamara Ayoub','Marketing','Senior',"./assets/img_avatar.png");
+// let safi= new Employee(1003,'Safi Walid','Administration','Mid-Senior',"./assets/img_avatar.png");
+// let omar= new Employee(1004,'Omar Zaid','Development','Senior',"./assets/img_avatar.png");
+// let rana= new Employee(1005,'Rana Saleh','Development','Junior',"./assets/img_avatar.png");
+// let hadi= new Employee(1006,'Hadi Ahmad','Finance','Mid-Senior',"./assets/img_avatar.png");
 
 
 
