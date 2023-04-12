@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+
     <title>HR-management-system</title>
 </head>
 
@@ -19,11 +23,11 @@
     </header>
     <main>
         <section>
-            <form id="drinksForm">
+            <form id="employeeForm">
                 <fieldset>
                     <legend>Adding New Employee</legend>
                     <label for="">Full Name:</label>
-                    <input type="text" id="fullName" name="fName" placeholder="please enter your full name" />
+                    <input type="text" id="eName" name="eName" placeholder="please enter your full name" />
                     <br />
                     <label for="department">Select the department:</label>
                     <select name="department" id="department">
@@ -49,10 +53,15 @@
             </form>
         </section>
 
-        <h3 id="h3"></h3>
 
 
     </main>
+    <h3 id="h3"></h3>
+    <div class="cardContainer">
+        <div id="card">
+
+        </div>
+    </div>
     <footer>
         <div class="center-fotter-list">
             <ul>
