@@ -1,12 +1,13 @@
 "use strict"
-let employees=[];
+export let employees=[];
 let header=document.getElementById("h3");
 let div1E1=document.getElementById("card");
 let myForm=document.getElementById("employeeForm");
 
 
 
-function Employee(fullName,department,level,imageURL,){
+
+export function Employee(fullName,department,level,imageURL,){
 this.salary=0;
 this.id=0;
 this.fullName=fullName;
@@ -19,7 +20,11 @@ employees.push(this);
 let netSalary=this.salary/7.5;
 }
 
-myForm.addEventListener('submit',handleSubmit);
+
+if (myForm) {
+    myForm.addEventListener('submit',handleSubmit);
+}
+
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -30,6 +35,8 @@ function handleSubmit(event) {
     console.log(employeeLev);
     let employeeNew= new Employee(employeeName,employeeDep,employeeLev,employeeImg);
 employeeNew.render();
+// employeeNew.tableRender();
+saveData(employees);
 }
 
 
@@ -66,11 +73,37 @@ case "Mid-Senior":
 function headerRender() {
     const h3E1=document.createElement("h3");
     h3E1.textContent=`HR-management-system`;
-    header.appendChild(h3E1);
+    if (header) {
+        header.appendChild(h3E1);
+    }
+
   
 }
 
 headerRender();
+
+function saveData(data) {
+    // localStorage.setItem("employees",employees);  Worng  
+    let stringifyData=JSON.stringify(data);
+    localStorage.setItem("employees",stringifyData);
+}
+
+function getData() {
+   let retriveData= localStorage.getItem("employees");
+   let arrayData=JSON.parse(retriveData);
+
+if (arrayData != null) {
+    for (let i = 0; i < arrayData.length; i++) {
+        new Employee(arrayData[i].fullName,arrayData[i].department,arrayData[i].level,arrayData[i].imageURL);
+        employees[i].render();
+        
+    }
+}
+
+
+
+
+}
 
 Employee.prototype.render=function(){
 
@@ -78,25 +111,39 @@ Employee.prototype.render=function(){
 // div1E1.style.display="flex";
 // div1E1.style.flexWrap="wrap";
 // div1E1.style.flexDirection="column";
-div1E1.style.backgroundColor="#50757a";
+if (div1E1) {
+    div1E1.style.backgroundColor="#50757a";
+}
+
 
 
 const imgE1=document.createElement("img");
 imgE1.src=this.imageURL;
 imgE1.style.height="10em";
 imgE1.style.borderRadius="50%";
+if (div1E1) {
+    div1E1.appendChild(imgE1); 
+}
 
-div1E1.appendChild(imgE1);
     const employeeInfo=document.createElement("h4");
     employeeInfo.textContent= `Name: ${this.fullName} - ID: ${this.id}`;
-    div1E1.appendChild(employeeInfo);
+    if (div1E1) {
+        div1E1.appendChild(employeeInfo);
+    }
+
     // const brE1=document.createElement("br");
     // div1E1.appendChild(brE1);
     const employeeInfo2=document.createElement("h4");
     employeeInfo2.textContent= `Department: ${this.department} - Level: ${this.level} ${this.salary}`;
-    div1E1.appendChild(employeeInfo2);
+    if (div1E1) {
+        div1E1.appendChild(employeeInfo2);
+    }
+
 
 }
+
+
+
 
 
 // let ghazi= new Employee(1000,'Ghazi Samer','Administration','Senior',"./assets/img_avatar.png");
@@ -117,16 +164,7 @@ for (let index = 0; index < employees.length; index++) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
+getData();
 
 
 
