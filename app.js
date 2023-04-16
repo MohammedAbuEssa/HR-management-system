@@ -91,7 +91,6 @@ function saveData(data) {
 function getData() {
    let retriveData= localStorage.getItem("employees");
    let arrayData=JSON.parse(retriveData);
-
 if (arrayData != null) {
     for (let i = 0; i < arrayData.length; i++) {
         new Employee(arrayData[i].fullName,arrayData[i].department,arrayData[i].level,arrayData[i].imageURL);

@@ -1,6 +1,14 @@
-import { employees,Employee } from "./app.js";
+"use strict"
 
 
+let getData= function () {
+    let retriveData= localStorage.getItem("employees");
+    let arrayData=JSON.parse(retriveData);
+ return arrayData;
+}
+let arr=getData();
+
+console.log(arr);
 let tr1=document.getElementById("firstRow");
 let tr2=document.getElementById("seRow");
 let tr3=document.getElementById("thRow");
@@ -10,22 +18,22 @@ let tr5=document.getElementById("footer");
 
 function departmentEmployeesNum(departmentName) {
     let sum=0;
-    for (let i = 0; i < employees.length; i++) {
-        if (employees[i].department==departmentName) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].department==departmentName) {
             sum++;
         }
         
     }
-    console.log(sum);
+
     return sum;
 }
 
 function departmentSalaryAvg(departmentName) {
     let salaryAvg=0;
     let sum=0;
-    for (let i = 0; i < employees.length; i++) {
-        if (employees[i].department==departmentName) {
-            salaryAvg+=employees[i].salary;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].department==departmentName) {
+            salaryAvg+=arr[i].salary;
             sum++;
         }
         
@@ -38,9 +46,9 @@ function departmentSalaryAvg(departmentName) {
 function departmentSalaryTotal(departmentName) {
     let salaryTotal=0;
     let sum=0;
-    for (let i = 0; i < employees.length; i++) {
-        if (employees[i].department==departmentName) {
-            salaryTotal+=employees[i].salary;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].department==departmentName) {
+            salaryTotal+=arr[i].salary;
             sum++;
         }
         
@@ -113,4 +121,4 @@ salaryTotalTeam.textContent=departmentSalaryTotal("Administration")+ departmentS
 tr5.appendChild(salaryTotalTeam);
 //  }
 
-console.log(employees);
+
