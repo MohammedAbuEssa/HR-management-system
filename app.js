@@ -91,10 +91,11 @@ function saveData(data) {
 function getData() {
    let retriveData= localStorage.getItem("employees");
    let arrayData=JSON.parse(retriveData);
+   console.log(arrayData);
 if (arrayData != null) {
     for (let i = 0; i < arrayData.length; i++) {
         new Employee(arrayData[i].fullName,arrayData[i].department,arrayData[i].level,arrayData[i].imageURL);
-        employees[i].render();
+        // employees[i].render();
         
     }
 }
@@ -153,6 +154,7 @@ if (div1E1) {
 // let rana= new Employee(1005,'Rana Saleh','Development','Junior',"./assets/img_avatar.png");
 // let hadi= new Employee(1006,'Hadi Ahmad','Finance','Mid-Senior',"./assets/img_avatar.png");
 
+getData();
 
 
 
@@ -163,7 +165,6 @@ for (let index = 0; index < employees.length; index++) {
 }
 
 
-getData();
 
 
 
